@@ -1,0 +1,85 @@
+body {
+    background-color: rgb(255, 255, 255);
+  }
+  #cards{
+    display: grid;
+    justify-content: center;
+    grid-gap: 16px;
+    grid-template-rows: repeat(3, 210px);
+    grid-template-columns: repeat(6, 140px);
+  }
+
+  .card {
+    height: 210px;
+    width: 140px;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .card:hover{
+    width: 130px;
+    background-color: rgb(43, 29, 94);
+    }
+
+  .front-image{
+    width: 120px;
+    height: 120px;
+  }
+
+  .card.flipped{
+    transform: rotateY(180deg)
+  }
+
+  .front, .back{
+    backface-visibility: hidden;
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  .card .front{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg)
+  }
+
+  .card .back{
+    background-image: url("cardBG.png");
+    background-position: center center; 
+    background-size: cover;
+    backface-visibility: hidden;
+  }
+
+  h1{
+    color: rgb(35, 35, 58);
+  }
+
+  @media (max-width: 1000px) {
+    /* Adjust font sizes */
+    h1 {
+      font-size: 36px;
+    }
+    .cards {
+      grid-template-columns: repeat(3, 140px);
+      grid-template-rows: repeat(4, 210px);
+      grid-gap: 10px;
+    }
+ 
+    .card {
+      height: 210px;
+      width: 140px;
+    }
+ 
+    /* Adjust padding and font size for the restart button */
+    .actions button {
+      padding: 10px 20px;
+      font-size: 24px;
+    }
+}
