@@ -34,5 +34,29 @@
     {
         "image": "assets/cherries.png",
         "name": "cherries"
+    },
+    {
+        "image": "assets/banana.png",
+        "name": "banana"
+    },
+    {
+        "image": "assets/cucumber.png",
+        "name": "cucumber"
+    },
+    {
+        "image": "assets/potato.png",
+        "name": "potato"
+    },
+    {
+        "image": "assets/sweetPotato.png",
+        "name": "sweetPotato"
+    },
+    {
+        "image": "assets/onion.png",
+        "name": "onion"
+    },
+    {
+        "image": "assets/pumkin.png",
+        "name": "pumkin"
     }
 ]

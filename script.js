@@ -3,9 +3,13 @@ let cards = [];
 let firstCard, secondCard;
 let lockBoard = false;
 let score = 0
-
+let time = 0
+let timerstart = false;
 let scoreBoard = document.getElementById("score");
 scoreBoard.textContent = score;
+
+let timeBoard = document.getElementById("time");
+timeBoard.textContent = time;
 
 fetch("./data/cards.json")
     .then( (res) => res.json())
@@ -15,7 +19,21 @@ fetch("./data/cards.json")
         generateCards();
     }
 )
+let interval = setInterval(updateTimer, 1000);
+const timerElement = document.getElementById('time');
+function updateTimer() {
+    time++;
+    timerElement.textContent = time;
+}
 
+function startTimer(){
+    if (!timerstart){
+        
+        interval = setInterval(updateTimer, 1000);
+
+    }
+    timerstart = true;
+}
 function shuffleCards(){
     let currentIndex = cards.length
     let randomIndex;
@@ -71,8 +89,7 @@ function flipCard(){
 function checkForMatch(){
     if(firstCard.dataset.name === secondCard.dataset.name)
         disableCards();
-
-    else
+        else{
         unflipCards();
 }
 
@@ -83,8 +100,11 @@ function disableCards(){
     secondCard.removeEventListener("touchstart", flipCard);
     score += 10;
     unlockBoard();
-    if(score === 90){
-        startConfetti()
+        if(score > 149){
+            startConfetti()
+            clearInterval(interval)
+            timerstart = false;
+        }
     }
 }
 
@@ -93,7 +113,7 @@ function unflipCards(){
         firstCard.classList.remove("flipped");
         secondCard.classList.remove("flipped");
         unlockBoard();
-    }, 1500)
+    }, 1000)
 }
 
 function unlockBoard(){
@@ -103,11 +123,18 @@ function unlockBoard(){
 }
 
 function restart(){
-     shuffleCards()
-     unlockBoard()
-     score = 0
-     scoreBoard.textContent = score;
-     cardsContainer.innerHTML = "";
-     generateCards()
-     stopConfetti()
+    shuffleCards()
+    unlockBoard()
+    score = 0
+    scoreBoard.textContent = score;
+    time = 0;
+    if(score < 149){
+        clearInterval(interval)
+    }
+    timerstart = false;
+    startTimer()
+    timerElement.textContent = time;
+    cardsContainer.innerHTML = "";
+    generateCards()
+    stopConfetti()
 }
