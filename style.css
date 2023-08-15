@@ -10,7 +10,7 @@ body {
   grid-gap: 10px;
   grid-template-rows: repeat(3, 210px);
   grid-template-columns: repeat(4, 140px); /* Adjust columns for mobile and tablet */
-  padding: 20px; /* Add some padding for better spacing on small screens */
+  
 }
 
 /* Media queries for mobile devices */
