@@ -1,6 +1,7 @@
 body {
   background-color: rgb(118, 234, 155);
   margin: 0; /* Reset default margin */
+  width: 100%;
 }
 
 #cards {
